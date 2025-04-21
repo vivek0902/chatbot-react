@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
   const { setUserRole, credential } = useContext(AuthContext);
-  const [formData, setFormData] = useState({ userId: "", currentPassword: "" });
+  const [formData, setFormData] = useState({ userId: "", password: "" });
 
   const handleChanges = (e) => {
     const { value, name } = e.target;
@@ -14,14 +14,14 @@ const Login = () => {
     e.preventDefault();
     if (
       credential.userId === formData.userId &&
-      credential.currentPassword === formData.currentPassword
+      credential.password === formData.password
     ) {
       setUserRole("user");
       navigate("/user");
     } else {
       alert("Please Enter Valid User Id and PassWord");
     }
-    setFormData({ userId: "", currentPassword: "" });
+    setFormData({ userId: "", password: "" });
     return null;
   };
 
@@ -37,15 +37,17 @@ const Login = () => {
           value={formData.userId}
           onChange={handleChanges}
           placeholder="Enter Your User Id"
+          autoComplete="username"
         />
         <br />
         <input
           type="password"
-          id="currentPassword"
-          name="currentPassword"
-          value={formData.currentPassword}
+          id="password"
+          name="password"
+          value={formData.password}
           onChange={handleChanges}
           placeholder="Enter Your Password"
+          autoComplete="current-password"
         />
         <br />
         <input type="submit" value="Login" />

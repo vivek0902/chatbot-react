@@ -5,7 +5,7 @@ export const AuthProvider = (props) => {
   const [userRole, setUserRole] = useState(null);
   const [credential, setCredential] = useState({
     userId: "vivek",
-    currentPassword: "pass",
+    password: "pass",
   });
   return (
     <AuthContext.Provider
