@@ -1,5 +1,6 @@
-import React, { useContext, useState, useRef, useEffect } from "react";
-import { ChatContent } from "../context/ChatBotContext";
+import React, { useState, useRef, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addUserMessage, addBotMessage } from "../store/slices/chatSlice";
 
 const getBotReply = (input) => {
   return new Promise((resolve) => {
@@ -11,9 +12,9 @@ const getBotReply = (input) => {
 };
 
 const Dashboard = () => {
-  const { chats, setUserChat, setBotChat } = useContext(ChatContent);
   const [input, setInput] = useState("");
-
+  const chats = useSelector((state) => state.chat.messages);
+  const dispatch = useDispatch();
   const chatScrollBottomRef = useRef(null);
 
   useEffect(() => {
@@ -28,11 +29,12 @@ const Dashboard = () => {
       alert("Enter your response First");
       return;
     }
-    setUserChat(input.trim());
+    dispatch(addUserMessage(input.trim()));
+
     setInput("");
 
     const botInput = await getBotReply(input);
-    setBotChat(botInput);
+    dispatch(addBotMessage(botInput));
   };
   return (
     <div>
@@ -55,8 +57,10 @@ const Dashboard = () => {
               }}
             >
               <p>
-                <strong>{chat.sender} : </strong>
-                {chat.msg}
+                <strong>
+                  {chat.sender === "user" ? "you said" : chat.sender} :{" "}
+                </strong>
+                {chat.reply}
               </p>
               {/*just to scroll down*/}
 

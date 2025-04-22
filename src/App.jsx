@@ -14,15 +14,8 @@ function App() {
         <Route path="/login" element={<Login />} />
 
         {/*------------------Protected User---------------------------*/}
-        <Route element={<PrivateRoute allowed={"user"} />}>
-          <Route
-            path="/chat"
-            element={
-              <ChatContentProvider>
-                <Dashboard />
-              </ChatContentProvider>
-            }
-          />
+        <Route element={<PrivateRoute />}>
+          <Route path="/chat" element={<Dashboard />} />
         </Route>
       </Routes>
     </div>
