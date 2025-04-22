@@ -50,7 +50,7 @@ const Login = () => {
           container
           component="main"
           sx={{
-            height: "100vh",
+            height: "90vh",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

@@ -12,8 +12,15 @@ const chatSlice = createSlice({
     addBotMessage(state, action) {
       state.messages.push({ sender: "bot", reply: action.payload });
     },
+    updateLastBotMessage(state, action) {
+      const lastIndex = state.messages.length - 1;
+      if (lastIndex >= 0 && state.messages[lastIndex].sender === "bot") {
+        state.messages[lastIndex].reply += `\n${action.payload}`;
+      }
+    },
   },
 });
 
-export const { addUserMessage, addBotMessage } = chatSlice.actions;
+export const { addUserMessage, addBotMessage, updateLastBotMessage } =
+  chatSlice.actions;
 export default chatSlice.reducer;

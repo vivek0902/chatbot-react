@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addUserMessage, addBotMessage } from "../store/slices/chatSlice";
+import {
+  addUserMessage,
+  addBotMessage,
+  updateLastBotMessage,
+} from "../store/slices/chatSlice";
 
 import {
   Box,
@@ -42,18 +46,20 @@ const MessageContainer = styled(Box)({
   },
 });
 
-const Message = styled(Paper)(({ isUser }) => ({
-  padding: "10px 16px",
-  borderRadius: isUser ? "16px 16px 0 16px" : "16px 16px 16px 0",
-  backgroundColor: isUser ? "#2196f3" : "#f5f5f5",
-  color: isUser ? "#fff" : "#333",
-  maxWidth: "80%",
-  marginBottom: "12px",
-  marginLeft: isUser ? "auto" : "0",
-  marginRight: isUser ? "0" : "auto",
-  position: "relative",
-  transition: "all 0.3s ease",
-}));
+const Message = styled(({ isUser, ...other }) => <Paper {...other} />)(
+  ({ isUser }) => ({
+    padding: "10px 16px",
+    borderRadius: isUser ? "16px 16px 0 16px" : "16px 16px 16px 0",
+    backgroundColor: isUser ? "#2196f3" : "#f5f5f5",
+    color: isUser ? "#fff" : "#333",
+    maxWidth: "80%",
+    marginBottom: "12px",
+    marginLeft: isUser ? "auto" : "0",
+    marginRight: isUser ? "0" : "auto",
+    position: "relative",
+    transition: "all 0.3s ease",
+  })
+);
 
 const InputContainer = styled(Box)({
   padding: "16px",
@@ -66,7 +72,7 @@ const InputContainer = styled(Box)({
 const getBotReply = (input) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      const reply = `bot reply: you said "${input}"`;
+      const reply = `bot reply: you said "${input}",bahut badhiya,sahi hai, all the best`;
       resolve(reply);
     }, 1500);
   });
@@ -95,9 +101,21 @@ const Dashboard = () => {
 
     setInput("");
     setIsTyping(true);
+    dispatch(addBotMessage(""));
+
     const botInput = await getBotReply(input);
-    dispatch(addBotMessage(botInput));
-    setIsTyping(false);
+    const botLineReply = botInput.split(",");
+    let index = 0;
+    const stream = () => {
+      if (index < botLineReply.length) {
+        dispatch(updateLastBotMessage(botLineReply[index]));
+        index++;
+        setTimeout(stream, 500);
+      } else {
+        setIsTyping(false);
+      }
+    };
+    setTimeout(stream, 500);
   };
   return (
     <ChatContainer role="region" aria-label="Chat interface">

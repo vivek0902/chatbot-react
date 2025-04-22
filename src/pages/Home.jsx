@@ -7,8 +7,9 @@ const HomeContainer = styled(Box)({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  height: "100vh",
+  minHeight: "90vh",
   textAlign: "center",
+  boxSizing: "border-box",
 });
 
 const Home = () => {
@@ -18,21 +19,19 @@ const Home = () => {
     navigate("/chat");
   };
   return (
-    <div>
-      <HomeContainer>
-        <Typography variant="h3" gutterBottom>
-          Welcome to chatbot
-        </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleChatRedirect}
-          sx={{ padding: "12px 24px", fontSize: "16px" }}
-        >
-          Chat Here
-        </Button>
-      </HomeContainer>
-    </div>
+    <HomeContainer>
+      <Typography variant="h3" gutterBottom>
+        Welcome to chatbot
+      </Typography>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={handleChatRedirect}
+        sx={{ padding: "12px 24px", fontSize: "16px" }}
+      >
+        Chat Here
+      </Button>
+    </HomeContainer>
   );
 };
 

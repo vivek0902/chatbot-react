@@ -18,6 +18,13 @@ const NavBar = () => {
   const handleLogout = () => {
     dispatch(logout());
   };
+
+  const handleStatus = () => {
+    if (!isAuth) {
+      alert("Login First Before Chat");
+    }
+  };
+  handleStatus;
   return (
     <>
       {/* <Toolbar>
@@ -61,6 +68,7 @@ const NavBar = () => {
                 to="/chat"
                 style={{ color: "white" }}
                 className={({ isActive }) => (isActive ? "active" : "")}
+                onClick={handleStatus}
               >
                 <Button color="inherit">CHAT</Button>
                 <hr />
@@ -84,7 +92,6 @@ const NavBar = () => {
                   <Button onClick={handleLogout} color="inherit">
                     LOG OUT
                   </Button>
-                  <hr />
                 </NavLink>
               </div>
             )}
