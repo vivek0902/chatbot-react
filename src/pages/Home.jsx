@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { styled } from "@mui/system";
 import { useNavigate } from "react-router-dom";
+import chatBotIcon from "../assets/chat-bot-icon.webp";
 const HomeContainer = styled(Box)({
   display: "flex",
   flexDirection: "column",
@@ -20,6 +21,16 @@ const Home = () => {
   };
   return (
     <HomeContainer>
+      <Box
+        component="img"
+        src={chatBotIcon}
+        alt="Chatbot Logo"
+        sx={{
+          width: 100, // adjust size as needed
+          height: "auto",
+          marginBottom: 2, // space below the logo
+        }}
+      />
       <Typography variant="h3" gutterBottom>
         Welcome to chatbot
       </Typography>
