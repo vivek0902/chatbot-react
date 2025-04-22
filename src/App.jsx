@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./pages/Dashboard";
+import { ChatContentProvider } from "./context/ChatBotContext";
 function App() {
   return (
     <div>
@@ -14,7 +15,14 @@ function App() {
 
         {/*------------------Protected User---------------------------*/}
         <Route element={<PrivateRoute allowed={"user"} />}>
-          <Route path="/chat" element={<Dashboard />} />
+          <Route
+            path="/chat"
+            element={
+              <ChatContentProvider>
+                <Dashboard />
+              </ChatContentProvider>
+            }
+          />
         </Route>
       </Routes>
     </div>
