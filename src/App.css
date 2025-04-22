@@ -1,0 +1,12 @@
+.active hr {
+  display: block;
+}
+
+hr {
+  display: none;
+}
+
+.active-link button {
+  color: red;
+  font-weight: bold;
+}
