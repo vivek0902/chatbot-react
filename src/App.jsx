@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./pages/Dashboard";
 import NavBar from "./components/NavBar";
+
 function App() {
   return (
     <div>
