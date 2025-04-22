@@ -10,8 +10,14 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../store/slices/authSlice";
 const NavBar = () => {
+  const isAuth = useSelector((state) => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+  };
   return (
     <>
       {/* <Toolbar>
@@ -24,6 +30,7 @@ const NavBar = () => {
         </IconButton>
       </Toolbar>
       <Divider></Divider> */}
+
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
@@ -39,7 +46,7 @@ const NavBar = () => {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               ChatBot
             </Typography>
-            <div className={({ isActive }) => (isActive ? "active" : "")}>
+            <div>
               <NavLink
                 to="/"
                 style={{ color: "white" }}
@@ -49,7 +56,7 @@ const NavBar = () => {
                 <hr />
               </NavLink>
             </div>
-            <div className={({ isActive }) => (isActive ? "active" : "")}>
+            <div>
               <NavLink
                 to="/chat"
                 style={{ color: "white" }}
@@ -60,16 +67,27 @@ const NavBar = () => {
               </NavLink>
             </div>
 
-            <div className={({ isActive }) => (isActive ? "active" : "")}>
-              <NavLink
-                to="/login"
-                style={{ color: "white" }}
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                <Button color="inherit">LOGIN</Button>
-                <hr />
-              </NavLink>
-            </div>
+            {!isAuth ? (
+              <div>
+                <NavLink
+                  to="/login"
+                  style={{ color: "white" }}
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  <Button color="inherit">LOGIN</Button>
+                  <hr />
+                </NavLink>
+              </div>
+            ) : (
+              <div>
+                <NavLink to="" style={{ color: "white" }}>
+                  <Button onClick={handleLogout} color="inherit">
+                    LOG OUT
+                  </Button>
+                  <hr />
+                </NavLink>
+              </div>
+            )}
           </Toolbar>
         </AppBar>
       </Box>

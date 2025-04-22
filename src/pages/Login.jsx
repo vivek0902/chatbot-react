@@ -58,10 +58,7 @@ const Login = () => {
         >
           <CssBaseline />
           <Grid
-            item
-            xs={12}
-            sm={8}
-            md={5}
+            gridColumn={{ xs: "span 12", sm: "span 6", md: "span 4" }}
             component={Paper}
             elevation={6}
             square
