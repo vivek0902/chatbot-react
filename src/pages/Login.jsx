@@ -17,7 +17,7 @@ const Login = () => {
       credential.password === formData.password
     ) {
       setUserRole("user");
-      navigate("/user");
+      navigate("/chat");
     } else {
       alert("Please Enter Valid User Id and PassWord");
     }

@@ -14,7 +14,7 @@ function App() {
 
         {/*------------------Protected User---------------------------*/}
         <Route element={<PrivateRoute allowed={"user"} />}>
-          <Route path="/user" element={<Dashboard />} />
+          <Route path="/chat" element={<Dashboard />} />
         </Route>
       </Routes>
     </div>
