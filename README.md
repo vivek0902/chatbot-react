@@ -5,6 +5,40 @@
 A functional chatbot frontend application built using **React**, **Redux Toolkit**, **React Router**, and **Material UI (MUI)**. The bot simulates message streaming, mimics API interaction, and supports protected routing with a responsive layout.
 
 ---
+
+## Live Demo
+
+https://chatbot-x28k.onrender.com/
+
+---
+
+## Screenshots
+### Home Page
+![WhatsApp Image 2025-04-23 at 11 03 18_610a9f60](https://github.com/user-attachments/assets/859f18c1-0904-4990-a209-11c09d5642f1)
+
+### Login Page
+![WhatsApp Image 2025-04-23 at 11 03 42_c21fcafd](https://github.com/user-attachments/assets/e6ab2fa2-0248-4555-ad50-9e78cd3b4c82)
+
+### chat Page
+![WhatsApp Image 2025-04-23 at 11 03 03_7b1a5873](https://github.com/user-attachments/assets/b03a9120-6322-4055-8cd6-611629d8f706)
+
+---
+
+## Github Repository
+
+[https://chatbot-x28k.onrender.com/](https://github.com/vivek0902/chatbot-react/)
+
+---
+## Github Commits History
+
+https://github.com/vivek0902/chatbot-react/commits/main/
+
+![image](https://github.com/user-attachments/assets/73f66b4b-a7c0-4bd7-93f6-adb03ac21d1c)
+![image](https://github.com/user-attachments/assets/025f1be7-f097-4329-ae0b-22e65c49faac)
+![image](https://github.com/user-attachments/assets/a803215d-58d5-43c7-a010-4f47723a5e01)
+
+---
+
 ## 📦 Setup & Installation
 
 1. **Clone the repository**  
@@ -24,8 +58,53 @@ A functional chatbot frontend application built using **React**, **Redux Toolkit
    ```
 
 4. Open in browser  
-   Visit `http://localhost:3000`
+   Visit `http://localhost:5173`
 
+---
+
+# Chatbot Commands Guide
+
+Interact with the chatbot using the following commands:
+
+## hello
+*Bot responds:*
+- Hi there! 👋  
+- I'm your friendly chatbot!  
+- How can I help you today?
+
+---
+
+## how are you
+*Bot responds:*
+- I'm doing great!  
+- Just some JS running in the background ⚙  
+- Let me know if you need help.
+
+---
+
+## what's your name
+*Bot responds:*
+- I’m called CodeBot.  
+- A chatbot powered by React and Markdown!  
+- Nice to meet you!
+
+---
+
+## bye
+*Bot responds:*
+- Goodbye! 👋  
+- See you next time.  
+- Stay curious!
+
+---
+
+## code example
+*Bot responds:*
+```js
+const add = (a, b) => a + b;
+console.log(add(2, 3));
+
+---
 ---
 
 ## Tech Stack
@@ -86,4 +165,4 @@ A functional chatbot frontend application built using **React**, **Redux Toolkit
 
 - Redux Toolkit was chosen for efficient state management.
 
-- Static credentials are hardcoded for login demo (e.g., email: user@test.com, username: testuser).
+- Static credentials are hardcoded for login demo (e.g., email: user@123, username: pass).
