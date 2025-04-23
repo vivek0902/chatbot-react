@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import ReactMarkdown from "react-markdown";
 import {
   addUserMessage,
   addBotMessage,
   updateLastBotMessage,
 } from "../store/slices/chatSlice";
+import getBotReply from "../utils/getBotReply";
 
 import {
   Box,
@@ -17,6 +19,7 @@ import {
   Paper,
   Fade,
   CircularProgress,
+  Tooltip,
 } from "@mui/material";
 import { styled } from "@mui/system";
 import { IoSend } from "react-icons/io5";
@@ -69,14 +72,14 @@ const InputContainer = styled(Box)({
   gap: "8px",
 });
 
-const getBotReply = (input) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const reply = `bot reply: you said "${input}",bahut badhiya,sahi hai, all the best`;
-      resolve(reply);
-    }, 1500);
-  });
-};
+// const getBotReply = (input) => {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       const reply = `bot reply: you said "${input}",bahut badhiya,sahi hai, all the best`;
+//       resolve(reply);
+//     }, 1500);
+//   });
+// };
 
 const Dashboard = () => {
   const [input, setInput] = useState("");
@@ -104,11 +107,10 @@ const Dashboard = () => {
     dispatch(addBotMessage(""));
 
     const botInput = await getBotReply(input);
-    const botLineReply = botInput.split(",");
     let index = 0;
     const stream = () => {
-      if (index < botLineReply.length) {
-        dispatch(updateLastBotMessage(botLineReply[index]));
+      if (index < botInput.length) {
+        dispatch(updateLastBotMessage(botInput[index]));
         index++;
         setTimeout(stream, 500);
       } else {
@@ -126,12 +128,16 @@ const Dashboard = () => {
             <Fade in={true} key={ChatIndex} timeout={500}>
               <Box sx={{ display: "flex", alignItems: "flex-start", mb: 2 }}>
                 {chat.sender !== "user" && (
-                  <Avatar sx={{ mr: 1, bgcolor: "#2196f3" }}>
-                    <FaRobot />
-                  </Avatar>
+                  <Tooltip title={chat.sender}>
+                    <Avatar sx={{ mr: 1, bgcolor: "#2196f3" }}>
+                      <FaRobot />
+                    </Avatar>
+                  </Tooltip>
                 )}
                 <Message isUser={chat.sender === "user"}>
-                  <Typography variant="body1">{chat.reply}</Typography>
+                  {/* <Typography variant="body1"> */}
+                  <ReactMarkdown>{chat.reply}</ReactMarkdown>
+                  {/* </Typography> */}
                 </Message>
               </Box>
             </Fade>

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 // import { Toolbar, Divider, Typography, IconButton } from "@mui/material";
 // import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import SmartToyIcon from "@mui/icons-material/SmartToy";
+import Diversity2Icon from "@mui/icons-material/Diversity2";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -41,18 +41,14 @@ const NavBar = () => {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-              <SmartToyIcon />
+            <IconButton>
+              <Diversity2Icon />
             </IconButton>
+
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               ChatBot
             </Typography>
+
             <div>
               <NavLink
                 to="/"

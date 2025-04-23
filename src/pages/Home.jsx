@@ -17,6 +17,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleChatRedirect = () => {
+    alert("Please Log In First");
     navigate("/chat");
   };
   return (
@@ -26,9 +27,9 @@ const Home = () => {
         src={chatBotIcon}
         alt="Chatbot Logo"
         sx={{
-          width: 100, // adjust size as needed
+          width: 100, 
           height: "auto",
-          marginBottom: 2, // space below the logo
+          marginBottom: 2, 
         }}
       />
       <Typography variant="h3" gutterBottom>
@@ -40,7 +41,7 @@ const Home = () => {
         onClick={handleChatRedirect}
         sx={{ padding: "12px 24px", fontSize: "16px" }}
       >
-        Chat Here
+        Start Chat
       </Button>
     </HomeContainer>
   );
