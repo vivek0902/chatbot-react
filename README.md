@@ -26,7 +26,7 @@ https://chatbot-x28k.onrender.com/
 
 ## Github Repository
 
-[https://chatbot-x28k.onrender.com/](https://github.com/vivek0902/chatbot-react/)
+https://github.com/vivek0902/chatbot-react
 
 ---
 ## Github Commits History
