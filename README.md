@@ -106,7 +106,6 @@ Interact with the chatbot using the following commands:
 const add = (a, b) => a + b;
 console.log(add(2, 3));
 
----
 
 ## Tech Stack
 
