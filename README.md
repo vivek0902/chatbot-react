@@ -102,11 +102,6 @@ Interact with the chatbot using the following commands:
 
 ## code example
 
-*Bot responds:*
-
-```js
-const add = (a, b) => a + b;
-console.log(add(2, 3));
 
 
 ## Tech Stack
