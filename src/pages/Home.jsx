@@ -3,6 +3,8 @@ import { Box, Typography, Button } from "@mui/material";
 import { styled } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 import chatBotIcon from "../assets/chat-bot-icon.webp";
+import { useSelector } from "react-redux";
+
 const HomeContainer = styled(Box)({
   display: "flex",
   flexDirection: "column",
@@ -14,10 +16,15 @@ const HomeContainer = styled(Box)({
 });
 
 const Home = () => {
+  const isAuth = useSelector((state) => state.auth.isAuthenticated);
+
   const navigate = useNavigate();
 
   const handleChatRedirect = () => {
-    alert("Please Log In First");
+    if (!isAuth) {
+      alert("Please Log In First");
+      navigate("/login");
+    }
     navigate("/chat");
   };
   return (
@@ -27,9 +34,9 @@ const Home = () => {
         src={chatBotIcon}
         alt="Chatbot Logo"
         sx={{
-          width: 100, 
+          width: 100,
           height: "auto",
-          marginBottom: 2, 
+          marginBottom: 2,
         }}
       />
       <Typography variant="h3" gutterBottom>

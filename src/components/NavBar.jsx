@@ -24,7 +24,6 @@ const NavBar = () => {
       alert("Login First Before Chat");
     }
   };
-  handleStatus;
   return (
     <>
       {/* <Toolbar>
