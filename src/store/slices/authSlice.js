@@ -1,16 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import credentialsData from "../../utils/credentials";
 const initialAuthState = {
   isAuthenticated: false,
   role: null,
   userId: null,
-  credentials: [
-    {
-      role: "user",
-      cred: { userId: "user@123", pass: "pass" },
-    },
-    { role: "user", cred: { userId: "user@456", pass: "pass456" } },
-  ],
+  credentials: credentialsData,
 };
 
 const authSlice = createSlice({

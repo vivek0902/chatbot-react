@@ -49,20 +49,20 @@ const MessageContainer = styled(Box)({
   },
 });
 
-const Message = styled(({ isUser, ...other }) => <Paper {...other} />)(
-  ({ isUser }) => ({
-    padding: "10px 16px",
-    borderRadius: isUser ? "16px 16px 0 16px" : "16px 16px 16px 0",
-    backgroundColor: isUser ? "#2196f3" : "#f5f5f5",
-    color: isUser ? "#fff" : "#333",
-    maxWidth: "80%",
-    marginBottom: "12px",
-    marginLeft: isUser ? "auto" : "0",
-    marginRight: isUser ? "0" : "auto",
-    position: "relative",
-    transition: "all 0.3s ease",
-  })
-);
+const Message = styled(Paper, {
+  shouldForwardProp: (prop) => prop !== "isUser",
+})(({ isUser }) => ({
+  padding: "10px 16px",
+  borderRadius: isUser ? "16px 16px 0 16px" : "16px 16px 16px 0",
+  backgroundColor: isUser ? "#2196f3" : "#f5f5f5",
+  color: isUser ? "#fff" : "#333",
+  maxWidth: "80%",
+  marginBottom: "12px",
+  marginLeft: isUser ? "auto" : "0",
+  marginRight: isUser ? "0" : "auto",
+  position: "relative",
+  transition: "all 0.3s ease",
+}));
 
 const InputContainer = styled(Box)({
   padding: "16px",
