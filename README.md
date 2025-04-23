@@ -101,15 +101,12 @@ Interact with the chatbot using the following commands:
 ## code example
 
 *Bot responds:*
-```
-   js
-   const add = (a, b) => a + b;
-   console.log(add(2, 3));
+
+```js
+const add = (a, b) => a + b;
+console.log(add(2, 3));
+
 ---
-
-
-
-
 
 ## Tech Stack
 
@@ -170,4 +167,7 @@ Interact with the chatbot using the following commands:
 - Redux Toolkit was chosen for efficient state management.
 
 - Static credentials are hardcoded for login demo (e.g., email: user@123, username: pass).
+
+
+
 
